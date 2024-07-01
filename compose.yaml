@@ -1,0 +1,17 @@
+version: '3'
+name: debian_vnc
+services:
+  vnc:
+    image: debian_vnc
+    build: .
+    security_opt:
+      - seccomp=unconfined
+    ports:
+      - 2234:22
+      - 5992:5900
+    command: -u xyz -p 12345 -U 1002:1002 -v
+    #    volumes:
+    #  - ${SHARE_PATH1}:/dat1
+    #  - ${SHARE_PATH2}:/dat2
+    tty: true
+    stdin_open: true
