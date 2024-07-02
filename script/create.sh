@@ -19,22 +19,17 @@ local_time=""
 while getopts ":n:L:h" opt; do
 	case $opt in
 		n)
-			echo "arg : $OPTARG"
 			if [[ $OPTARG == *s* ]];then
-				echo "SSH"
 				disable_ssh=true;
 			fi
 			if [[ $OPTARG  == *x* ]];then
-				echo "XX11"
 				disable_x11=true;
 			fi
 			if [[ $OPTARG == *v* ]];then
-				echo "VNC"
 				disable_vnc=true;
 			fi
 			;;
 		L)
-			echo "L arg $OPTARG"
 			local_time=$OPTARG
 			;;
 		h)
@@ -51,8 +46,8 @@ done
 echo "Function ssh: $disable_ssh"
 echo "Function x11: $disable_x11"
 echo "Function vcn: $disable_vnc"
-if [ -z "$local_time" ];then
-	echo "Set tiem region: $local_time"
+if [ ! -z "$local_time" ];then
+	echo "Set time region: $local_time"
 fi
 
 check_success(){
